@@ -1,0 +1,9 @@
+# action.yml
+name: 'Chainsaw'
+description: 'Generating SBOM'
+runs:
+  using: 'composite'
+  steps:
+    - uses: actions/checkout@v3
+    - run: cd $GITHUB_WORKSPACE && docker run --rm -v /tmp:/tmp -v $(pwd):/app:rw -t ghcr.io/cyclonedx/cdxgen -r /app -o /app/bom.json
+      shell: bash
