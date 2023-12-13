@@ -7,5 +7,5 @@ runs:
     - uses: actions/checkout@v3
     - run: cd $GITHUB_WORKSPACE && docker run --rm -v /tmp:/tmp -v $(pwd):/app:rw -t ghcr.io/cyclonedx/cdxgen -r /app -o /app/bom.json
       shell: bash
-    - run: cd $GITHUB_WORKSPACE && cat bom.json
+    - run: apk add osv-scanner && cd $GITHUB_WORKSPACE && osv-scanner --sbom=bom.json --output results.json && cat results.json
       shell: bash
