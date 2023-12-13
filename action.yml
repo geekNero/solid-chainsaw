@@ -1,5 +1,5 @@
 # action.yml
-name: 'Chainsaw'
+name: 'Chainsaw=CDXGen'
 description: 'Generating SBOM'
 runs:
   using: 'composite'
